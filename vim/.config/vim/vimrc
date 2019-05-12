@@ -1,0 +1,24 @@
+set undodir=$XDG_CACHE_HOME/vim/undo
+set directory=$XDG_CACHE_HOME/vim/swap
+set backupdir=$XDG_CACHE_HOME/vim/backup
+set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+set number
+
+set nocompatible
+filetype off
+
+set rtp+=~/.local/share/vim/bundle/Vundle.vim
+call vundle#begin('~/.local/share/vim/bundle')
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-sensible'
+Plugin 'bling/vim-airline'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
+
+call vundle#end()
+filetype plugin indent on

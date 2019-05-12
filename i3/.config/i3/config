@@ -1,0 +1,332 @@
+# i3 config file (v4)
+
+set $bs bindsym
+set $: exec --no-startup-id
+set $:: exec_always --no-startup-id
+
+set $mod Mod4
+
+workspace_layout tabbed
+
+new_window pixel 1
+new_float normal
+
+hide_edge_borders none
+
+$bs $mod+u border none
+$bs $mod+y border pixel 1
+$bs $mod+n border normal
+
+font xft:"DejaVuSansMono Nerd" 11
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# start a terminal
+$bs $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+$bs $mod+Shift+q kill
+
+# start program launcher
+bindsym $mod+d $: rofi -show run
+
+################################################################################################
+## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+################################################################################################
+
+$: volumeicon
+$bs $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+################################################################################################
+
+# Screen brightness controls
+$bs XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+$bs XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Start Applications
+$bs $mod+F3 $: nemo --no-desktop
+$bs $mod+Shift+F3 $: gksu nemo --no-desktop
+$bs $mod+t $: pkill compton
+$bs $mod+Ctrl+t $: compton -b
+$bs $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+$bs $mod+Ctrl+x --release $: xkill
+
+focus_follows_mouse yes
+
+# change focus
+$bs $mod+j focus left
+$bs $mod+k focus down
+$bs $mod+l focus up
+$bs $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+$bs $mod+Left focus left
+$bs $mod+Down focus down
+$bs $mod+Up focus up
+$bs $mod+Right focus right
+
+# move focused window
+$bs $mod+Shift+j move left
+$bs $mod+Shift+k move down
+$bs $mod+Shift+l move up
+$bs $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+$bs $mod+Shift+Left move left
+$bs $mod+Shift+Down move down
+$bs $mod+Shift+Up move up
+$bs $mod+Shift+Right move right
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+$bs $mod+b workspace back_and_forth
+$bs $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# split orientation
+$bs $mod+h split h;exec notify-send 'tile horizontally'
+$bs $mod+v split v;exec notify-send 'tile vertically'
+$bs $mod+q split toggle
+
+# toggle fullscreen mode for the focused container
+$bs $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+$bs $mod+s layout stacking
+$bs $mod+w layout tabbed
+$bs $mod+e layout toggle split
+
+# toggle tiling / floating
+$bs $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+$bs $mod+space focus mode_toggle
+
+# toggle sticky
+$bs $mod+Shift+s sticky toggle
+
+# focus the parent container
+$bs $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+$bs $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+$bs $mod+minus scratchpad show
+
+#navigate workspaces next / previous
+$bs $mod+Ctrl+Right workspace next
+$bs $mod+Ctrl+Left workspace prev
+
+# Workspace names
+# to display names or symbols instead of plain workspace numbers you can use
+# something like: set $ws1 1:mail
+#                 set $ws2 2:
+set $ws1   ""
+set $ws2   ""
+set $ws3   ""
+set $ws4   ""
+set $ws5   ""
+set $ws6   ""
+set $ws7   ""
+set $ws8   ""
+set $ws9   ""
+set $ws10  ""
+
+# switch to workspace
+$bs $mod+1 workspace $ws1
+$bs $mod+2 workspace $ws2
+$bs $mod+3 workspace $ws3
+$bs $mod+4 workspace $ws4
+$bs $mod+5 workspace $ws5
+$bs $mod+6 workspace $ws6
+$bs $mod+7 workspace $ws7
+$bs $mod+8 workspace $ws8
+
+# Move focused container to workspace
+$bs $mod+Ctrl+1 move container to workspace $ws1
+$bs $mod+Ctrl+2 move container to workspace $ws2
+$bs $mod+Ctrl+3 move container to workspace $ws3
+$bs $mod+Ctrl+4 move container to workspace $ws4
+$bs $mod+Ctrl+5 move container to workspace $ws5
+$bs $mod+Ctrl+6 move container to workspace $ws6
+$bs $mod+Ctrl+7 move container to workspace $ws7
+$bs $mod+Ctrl+8 move container to workspace $ws8
+
+# Move to workspace with focused container
+$bs $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+$bs $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+$bs $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+$bs $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+$bs $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+$bs $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+$bs $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+$bs $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="(?)nemo"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+for_window [class="(?i)Discord"] floating enable border normal
+for_window [class="(?i)Franz"] floating enable border normal
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# reload the configuration file
+$bs $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+$bs $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+$bs $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Set shut down, restart and locking features
+$bs $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    $bs l exec --no-startup-id i3exit lock, mode "default"
+    $bs s exec --no-startup-id i3exit suspend, mode "default"
+    $bs u exec --no-startup-id i3exit switch_user, mode "default"
+    $bs e exec --no-startup-id i3exit logout, mode "default"
+    $bs h exec --no-startup-id i3exit hibernate, mode "default"
+    $bs r exec --no-startup-id i3exit reboot, mode "default"
+    $bs Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    $bs Return mode "default"
+    $bs Escape mode "default"
+}
+
+# Resize window (you can also use the mouse for that)
+$bs $mod+r mode "resize"
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        $bs j resize shrink width 5 px or 5 ppt
+        $bs k resize grow height 5 px or 5 ppt
+        $bs l resize shrink height 5 px or 5 ppt
+        $bs semicolon resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        $bs Left resize shrink width 10 px or 10 ppt
+        $bs Down resize grow height 10 px or 10 ppt
+        $bs Up resize shrink height 10 px or 10 ppt
+        $bs Right resize grow width 10 px or 10 ppt
+
+        # exit resize mode: Enter or Escape
+        $bs Return mode "default"
+        $bs Escape mode "default"
+}
+
+# Lock screen
+$bs $mod+9 exec --no-startup-id blurlock
+
+# Autostart applications
+$: /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+$: "/usr/bin/nitrogen --restore; sleep 1; compton -b"
+$: /usr/bin/nm-applet
+$: /usr/bin/xrandr --dpi 220
+$:: $HOME/.local/bin/polybar.sh
+
+# Color palette used for the terminal ( ~/.Xresources file )
+set_from_resource $background background
+set_from_resource $foreground foreground
+set_from_resource $color0     color0
+set_from_resource $color1     color1
+set_from_resource $color2     color2
+set_from_resource $color3     color3
+set_from_resource $color4     color4
+set_from_resource $color5     color5
+set_from_resource $color6     color6
+set_from_resource $color7     color7
+set_from_resource $color8     color8
+set_from_resource $color9     color9
+set_from_resource $color10    color10
+set_from_resource $color11    color11
+set_from_resource $color12    color12
+set_from_resource $color13    color13
+set_from_resource $color14    color14
+set_from_resource $color15    color15
+
+# Theme colors
+# class                 border  backgr. text    indic.   child_border
+client.focused          #556064 #556064 #80FFF9 #FDF6E3
+client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+client.background       #2B2C2B
+
+# Set inner/outer gaps
+gaps inner 4
+gaps outer -2
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+$bs $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        $bs o      mode "$mode_gaps_outer"
+        $bs i      mode "$mode_gaps_inner"
+        $bs Return mode "default"
+        $bs Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        $bs plus  gaps inner current plus 5
+        $bs minus gaps inner current minus 5
+        $bs 0     gaps inner current set 0
+
+        $bs Shift+plus  gaps inner all plus 5
+        $bs Shift+minus gaps inner all minus 5
+        $bs Shift+0     gaps inner all set 0
+
+        $bs Return mode "default"
+        $bs Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        $bs plus  gaps outer current plus 5
+        $bs minus gaps outer current minus 5
+        $bs 0     gaps outer current set 0
+
+        $bs Shift+plus  gaps outer all plus 5
+        $bs Shift+minus gaps outer all minus 5
+        $bs Shift+0     gaps outer all set 0
+
+        $bs Return mode "default"
+        $bs Escape mode "default"
+}
