@@ -1,15 +1,21 @@
-export NODE_ENV="development"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS='/usr/local/share:/usr/share'
+export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME/xdg"
 
-export BROWSER="chromium"
-export EDITOR="vim"
-export PAGER="less"
-export VISUAL="atom"
+export NODE_ENV='development'
 
-export _JAVA_OPTIONS="-Dswing.aatext=true -Dsun.java2d.uiScale=2"
+export BROWSER='chromium'
+export EDITOR='vim'
+export PAGER='less'
+export VISUAL='atom'
+
+export _JAVA_OPTIONS='-Dswing.aatext=true -Dsun.java2d.uiScale=2'
 
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
-export CFLAGS="-Wall -O3 -std=gnu11"
+export CFLAGS="-Wall -Wpedantic -fPIC -O2 -std=gnu11"
 
 export ANSIBLE_NOCOWS='1'
 export ATOM_HOME="$XDG_DATA_HOME"/atom
@@ -48,16 +54,17 @@ export RANDFILE="$XDG_RUNTIME_DIR"/rnd
 export RUST_SRC_PATH="$XDG_DATA_HOME/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
-export SAL_USE_VCLPLUGIN="gtk"
+export SAL_USE_VCLPLUGIN='gtk'
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
 export RXVT_SOCKET="$XDG_RUNTIME_DIR"/urxvtd
 
 export VIMINIT='let $VIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $VIMRC'
+export VIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME"/zplug
 export ZPLUG_HOME="$XDG_DATA_HOME"/zsh/zplug
 
-export ZEDLINUX="/mnt/zedlinux"
+export VAULT_ADDR='http://127.0.0.1:8200'

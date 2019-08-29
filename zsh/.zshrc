@@ -6,6 +6,8 @@ SAVEHIST=1000
 setopt appendhistory extendedglob
 bindkey -e
 
+bindkey "\e[3~" delete-char
+
 fpath+=~/.local/share/zsh/functions
 
 autoload -U add-zsh-hook
@@ -14,6 +16,10 @@ compinit
 
 path+=("$HOME/.local/bin")
 path+=("$XDG_DATA_HOME/cargo/bin")
+path+=("$XDG_DATA_HOME/sciter-sdk/bin")
+path+=("$XDG_DATA_HOME/sciter-sdk/bin.gtk/x64")
+
+export LIBRARY_PATH="$XDG_DATA_HOME/sciter-sdk/include:$LIBRARY_PATH"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -78,3 +84,8 @@ load-nvmrc() {
 
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+alias svim='/usr/bin/sudo -E /usr/bin/vim -u "$VIMRC"'
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault

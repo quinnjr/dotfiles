@@ -1,0 +1,9 @@
+[user]
+	email = quinn.josephr@protonmail.com
+	name = Joseph R. Quinn
+[http "https://gopkg.in"]
+	followRedirects = true
+[core]
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
