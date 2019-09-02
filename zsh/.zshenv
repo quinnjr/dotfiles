@@ -13,7 +13,7 @@ export VISUAL='atom'
 
 export _JAVA_OPTIONS='-Dswing.aatext=true -Dsun.java2d.uiScale=2'
 
-export CC="/usr/bin/clang"
+export CC="/usr/bin/musl-clang"
 export CXX="/usr/bin/clang++"
 export CFLAGS="-Wall -Wpedantic -fPIC -O2 -std=gnu11"
 

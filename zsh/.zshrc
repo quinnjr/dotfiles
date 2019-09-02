@@ -23,6 +23,7 @@ export LIBRARY_PATH="$XDG_DATA_HOME/sciter-sdk/include:$LIBRARY_PATH"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
 
 source "$ZPLUG_HOME/init.zsh"
 
@@ -38,6 +39,7 @@ zplug "quinnjr/6c13a42950a462e519d2ee017f62a7e5",\
   from:gist, as:plugin, use:common.zsh
 
 zplug "plugins/archlinux", from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
@@ -50,6 +52,11 @@ zplug "plugins/gitignore", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
 zplug "plugins/heroku", from:oh-my-zsh
 zplug "plugins/jsontools", from:oh-my-zsh
+zplug "plugins/jump", from:oh-my-zsh
+zplug "plugins/keychain", from:oh-my-zsh
+zplug "plugins/node", from:oh-my-zsh
+zplug "plugins/npm", from:oh-my-zsh
+zplug "plugins/npx", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/rust", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
@@ -89,3 +96,6 @@ alias svim='/usr/bin/sudo -E /usr/bin/vim -u "$VIMRC"'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
+
+zstyle :omz:plugins:keychain agents gpg,ssh
+
