@@ -8,7 +8,7 @@ bindkey -e
 
 bindkey "\e[3~" delete-char
 
-fpath+=~/.local/share/zsh/functions
+fpath+="$HOME/.local/share/zsh/functions"
 
 autoload -U add-zsh-hook
 autoload -Uz compinit
@@ -35,13 +35,9 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "b4b4r07/enhancd", use:init.sh
 
-zplug "quinnjr/6c13a42950a462e519d2ee017f62a7e5",\
-  from:gist, as:plugin, use:common.zsh
-
 zplug "plugins/archlinux", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/cp", from:oh-my-zsh
 zplug "plugins/dotenv", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
@@ -92,10 +88,12 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-alias svim='/usr/bin/sudo -E /usr/bin/vim -u "$VIMRC"'
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
 zstyle :omz:plugins:keychain agents gpg,ssh
 
+source "$HOME/.zsh_alias"
+
+# Load fzf key bindings
+source /usr/share/fzf/key-bindings.zsh
