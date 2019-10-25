@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_DATA_DIRS='/usr/local/share:/usr/share'
+export XDG_DATA_DIRS='/var/lib/flatpak/exports/share:/usr/local/share:/usr/share'
 export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME/xdg"
 
 export NODE_ENV='development'
@@ -10,10 +10,11 @@ export BROWSER='chromium'
 export EDITOR='vim'
 export PAGER='less'
 export VISUAL='atom'
+export TERMINAL='tilix'
 
 export _JAVA_OPTIONS='-Dswing.aatext=true -Dsun.java2d.uiScale=2'
 
-export CC="/usr/bin/musl-clang"
+export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
 export CFLAGS="-Wall -Wpedantic -fPIC -O2 -std=gnu11"
 

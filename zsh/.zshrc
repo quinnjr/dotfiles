@@ -11,15 +11,19 @@ bindkey "\e[3~" delete-char
 fpath+="$HOME/.local/share/zsh/functions"
 
 autoload -U add-zsh-hook
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 
 path+=("$HOME/.local/bin")
 path+=("$XDG_DATA_HOME/cargo/bin")
-path+=("$XDG_DATA_HOME/sciter-sdk/bin")
-path+=("$XDG_DATA_HOME/sciter-sdk/bin.gtk/x64")
 
-export LIBRARY_PATH="$XDG_DATA_HOME/sciter-sdk/include:$LIBRARY_PATH"
+if [ ! -d $NVM_DIR ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | zsh
+fi
+
+if [ ! -d $ZPLUG_HOME ]; then
+  git clone https:://github.com/zplug/zplug $ZPLUG_HOME
+fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -88,12 +92,11 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/vault vault
+[ -s /usr/bin/value ] && complete -o nospace -C /usr/bin/vault vault
 
 zstyle :omz:plugins:keychain agents gpg,ssh
 
 source "$HOME/.zsh_alias"
 
 # Load fzf key bindings
-source /usr/share/fzf/key-bindings.zsh
+[ -s /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh

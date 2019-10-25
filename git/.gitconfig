@@ -1,5 +1,5 @@
 [user]
-	email = quinn.josephr@protonmail.com
+	email = 423821+quinnjr@users.noreply.github.com
 	name = Joseph R. Quinn
 [http "https://gopkg.in"]
 	followRedirects = true
@@ -7,3 +7,5 @@
 	excludesfile = ~/.gitignore_global
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[tag]
+	forceSignAnnotated = true
