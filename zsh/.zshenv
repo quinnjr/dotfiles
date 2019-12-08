@@ -69,3 +69,5 @@ export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME"/zplug
 export ZPLUG_HOME="$XDG_DATA_HOME"/zsh/zplug
 
 export VAULT_ADDR='http://127.0.0.1:8200'
+
+[ -s /usr/bin/vault ] && export VAULT_TOKEN=$(cat $HOME/.vault_token)

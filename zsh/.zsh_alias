@@ -92,3 +92,6 @@ alias ll='exa -lg'
 alias ldot='exa -lgd .*'
 
 alias mkdir='mkdir -p'
+
+alias crates='cargo'
+alias "cargo check"="clear && cargo check"

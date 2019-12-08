@@ -28,6 +28,7 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
+[ -s "$XDG_DATA_HOME/rvm/scripts/rvm" ] && \. "$XDG_DATA_HOME/rvm/scripts/rvm"
 
 source "$ZPLUG_HOME/init.zsh"
 
@@ -51,12 +52,8 @@ zplug "plugins/git-flow-avh", from:oh-my-zsh
 zplug "plugins/gitignore", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
 zplug "plugins/heroku", from:oh-my-zsh
-zplug "plugins/jsontools", from:oh-my-zsh
 zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/keychain", from:oh-my-zsh
-zplug "plugins/node", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-zplug "plugins/npx", from:oh-my-zsh
 zplug "plugins/nvm", from:oh-my-zsh
 zplug "plugins/rust", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
@@ -100,3 +97,19 @@ source "$HOME/.zsh_alias"
 
 # Load fzf key bindings
 [ -s /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+function clear-scrollback-buffer {
+  # clear screen
+  clear
+  # clear buffer. The following sequence code is available for xterm.
+  printf '\e[3J'
+  # .reset-prompt: bypass the zsh-syntax-highlighting wrapper
+  # https://github.com/sorin-ionescu/prezto/issues/1026
+  # https://github.com/zsh-users/zsh-autosuggestions/issues/107#issuecomment-183824034
+  # -R: redisplay the prompt to avoid old prompts being eaten up
+  # https://github.com/Powerlevel9k/powerlevel9k/pull/1176#discussion_r299303453
+  zle .reset-prompt && zle -R
+}
+
+zle -N clear-scrollback-buffer
+bindkey '^L' clear-scrollback-buffer
