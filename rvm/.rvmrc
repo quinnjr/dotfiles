@@ -1,0 +1,3 @@
+rmv_install_on_use_flag=1
+rvm_path=/home/rath/.local/share/rvm
+rvm_autoupdate_flag=2

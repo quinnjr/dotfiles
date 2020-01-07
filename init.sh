@@ -27,15 +27,25 @@ begins_with_short_option()
 	test "$all_short_options" = "${all_short_options/$first_option/}" && return 1 || return 0
 }
 
-# THE DEFAULTS INITIALIZATION - OPTIONALS
-_arg_with_i3="off"
-
 print_help ()
 {
-	printf 'Usage: %s [--(no-)with-i3] [-v|--version]\n' "$0"
-	printf '\t%s\n' "--with-i3,--no-with-i3: Add symlinks for i3 as the WM (off by default)"
+	printf 'Usage: %s [OPTIONS]\n' "$0"
+	printf '\t%s\n' "--with-archlinux: Add symlinks for archlinx files (off by default)"
+	printf '\t%s\n' "--with-atom: Add symlinks for atom as the visual editor (off by default)"
+	printf '\t%s\n' "--with-cinnamon: Add symlinks for cinnamon as the WM (off by default)"
+	printf '\t%s\n' "--with-i3: Add symlinks for i3 as the WM (off by default)"
+	printf '\t%s\n' "--with-i3: Add symlinks for nodejs and nvm (off by default)"
+	printf '\t%s\n' "--with-i3: Add symlinks for Ruby and rvm (off by default)"
 	printf '\t%s\n' "-v,--version: Prints version"
 }
+
+# THE DEFAULTS INITIALIZATION - OPTIONALS
+_arg_with_archlinux="off"
+_arg_with_atom="off"
+_arg_with_cinnamon="off"
+_arg_with_i3="off"
+_arg_with_node="off"
+_arg_with_rvm="off"
 
 parse_commandline ()
 {
@@ -43,15 +53,25 @@ parse_commandline ()
 	do
 		_key="$1"
 		case "$_key" in
-			--no-with-i3|--with-i3)
+			--with-archlinux)
+			  _arg_with_archlinux="on"
+				;;
+			--with-atom)
+				_arg_with_atom="on"
+				;;
+			--with-cinnamon)
+				_arg_with_cinnamon="on"
+				;;
+			--with-i3)
 				_arg_with_i3="on"
-				test "${1:0:5}" = "--no-" && _arg_with_i3="off"
+				;;
+			--with-node)
+			  _arg_with_node="on"
+				;;
+			--with-rvm)
+				_arg_with_rvm="on"
 				;;
 			-v|--version)
-				echo test v$version
-				exit 0
-				;;
-			-v*)
 				echo test v$version
 				exit 0
 				;;
@@ -75,14 +95,49 @@ if ! type 'stow' &> /dev/null; then
   exit 1
 fi
 
-stow -t "$HOME" zsh
-stow -t "$HOME" xwindow
+if [ ! -d "$XDG_DATA_HOME/vim/bundle/Vundle.vim" ]; then
+  git clone https://github.com/VundleVime/Vundle.vim.git \
+    "$XDG_DATA_HOME/vim/bundle/Vundle.vim"
+  vim +PluginInstall +qall
+fi
+
+for component in ("git" "gtk" "misc" "vim" "zsh")
+	stow -t "$HOME" $component
+	if [[ $component == 'zsh' && ! -d "$ZPLUG_HOME" ]]; then
+		git clone https:://github.com/zplug/zplug "$ZPLUG_HOME"
+	fi
+done
+
+if [ _arg_with_archlinux == 'on' ]; then
+	stow -t "$HOME" archlinux
+	stow -t "$HOME" nvidia
+	stow -t "$HOME" systemd
+done
+
+if [ _arg_with_atom == 'on' ]; then
+	stow -t "$HOME" atom
+  ln -s "$HOME"/.atom "$XDG_DATA_HOME"/atom
+done
+
+if [ _arg_with-cinnamon == 'on' ]; then
+	stow -t "$HOME" cinnamon
+done
 
 if [ _arg_with_i3 == 'on' ]; then
   stow -t "$HOME" i3
 fi
 
-stow -t "$HOME" atom
-ln -s "$HOME"/.atom "$XDG_DATA_HOME"/atom
+if [ _arg_with_node == 'on' ]; then
+	if [ ! -d "$NVM_DIR" ]; then
+	  git clone https://github.com/nvm-sh/nvm "$XDG_DATA_HOME/nvm"
+	fi
+	stow -t "$HOME" node
+fi
+
+if [ _arg_with_rvm == 'on' ]; then
+	if [ ! -d "$XDG_DATA_HOME/rvm" ]; then
+    curl -sSL https://get.rvm.io | sh -s -- --ignore-dotfiles stable
+  fi
+fi
 
 # ] <-- needed because of Argbash

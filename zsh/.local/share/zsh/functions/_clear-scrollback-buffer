@@ -1,0 +1,7 @@
+#compdef clear-scrollback-buffer
+
+clear-scrollback-buffer() {
+  clear
+  printf '\e[3J'
+  zle .reset-prompt && zle -R
+}

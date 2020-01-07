@@ -8,7 +8,7 @@ bindkey -e
 
 bindkey "\e[3~" delete-char
 
-fpath+="$HOME/.local/share/zsh/functions"
+fpath+="$XDG_DATA_HOME/zsh/functions"
 
 autoload -U add-zsh-hook
 autoload -Uz compinit && compinit
@@ -17,18 +17,12 @@ autoload -U +X bashcompinit && bashcompinit
 path+=("$HOME/.local/bin")
 path+=("$XDG_DATA_HOME/cargo/bin")
 
-if [ ! -d $NVM_DIR ]; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | zsh
-fi
-
-if [ ! -d $ZPLUG_HOME ]; then
-  git clone https:://github.com/zplug/zplug $ZPLUG_HOME
-fi
-
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
 [ -s "$XDG_DATA_HOME/rvm/scripts/rvm" ] && \. "$XDG_DATA_HOME/rvm/scripts/rvm"
+
+source "$XDG_DATA_HOME/zsh/alias"
 
 source "$ZPLUG_HOME/init.zsh"
 
@@ -68,48 +62,17 @@ fi
 
 zplug load
 
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+zstyle :omz:plugins:keychain agents gpg,ssh
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts \
+  'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+if [ -d "$NVM_DIR" ]
+  add-zsh-hook chpwd load-nvmrc
+  load-nvmrc
+fi
 
 [ -s /usr/bin/value ] && complete -o nospace -C /usr/bin/vault vault
-
-zstyle :omz:plugins:keychain agents gpg,ssh
-
-source "$HOME/.zsh_alias"
-
-# Load fzf key bindings
 [ -s /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-
-function clear-scrollback-buffer {
-  # clear screen
-  clear
-  # clear buffer. The following sequence code is available for xterm.
-  printf '\e[3J'
-  # .reset-prompt: bypass the zsh-syntax-highlighting wrapper
-  # https://github.com/sorin-ionescu/prezto/issues/1026
-  # https://github.com/zsh-users/zsh-autosuggestions/issues/107#issuecomment-183824034
-  # -R: redisplay the prompt to avoid old prompts being eaten up
-  # https://github.com/Powerlevel9k/powerlevel9k/pull/1176#discussion_r299303453
-  zle .reset-prompt && zle -R
-}
 
 zle -N clear-scrollback-buffer
 bindkey '^L' clear-scrollback-buffer
