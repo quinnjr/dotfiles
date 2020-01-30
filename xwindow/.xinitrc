@@ -1,0 +1,1 @@
+xwindow/.config/xwindow/xinitrc

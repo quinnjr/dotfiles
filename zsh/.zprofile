@@ -1,3 +1,1 @@
-if [[ -f "$HOME/.profile" ]]; then
-  source "$HOME/.profile"
-fi
+.local/share/zsh/profile

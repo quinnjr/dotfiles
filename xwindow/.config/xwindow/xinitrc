@@ -1,0 +1,2 @@
+xrandr --dpi 192
+xrdb -merge $HOME/.Xresources &&

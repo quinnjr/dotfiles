@@ -91,7 +91,19 @@ alias ldot='exa -lgd .*'
 alias mkdir='mkdir -p'
 
 alias crates='cargo'
-alias "cargo check"="clear && cargo check"
+alias 'cargo check'='clear && cargo check'
 
-alias gpu_off="sudo tee /proc/acpi/bbswitch <<<OFF"
-alias gpu_on="sudo tee /proc/acpi/bbswitch <<<ON"
+alias gpu_off='sudo tee /proc/acpi/bbswitch <<<OFF'
+alias gpu_on='sudo tee /proc/acpi/bbswitch <<<ON'
+
+alias fsi='fsharpi'
+
+alias feh='feh --scale-down --auto-zoom'
+
+# Break the bad habit, become an Internet Wizard
+alias nano=vim
+alias editor=vim
+
+# Fix tmux
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias "git commit"="git add . && git commit"

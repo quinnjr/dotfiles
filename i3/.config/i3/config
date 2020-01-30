@@ -1,126 +1,119 @@
+# vim:filetype=i3
 # i3 config file (v4)
 
-set $bs bindsym
-set $: exec --no-startup-id
-set $:: exec_always --no-startup-id
-
+# Bind mod key to Mod4
 set $mod Mod4
 
+# Set default layout style to tabbed
 workspace_layout tabbed
 
-new_window pixel 1
-new_float normal
+# Set new window options
+# new_window pixel 1
+# new_float pixel 1
 
 hide_edge_borders none
 
-$bs $mod+u border none
-$bs $mod+y border pixel 1
-$bs $mod+n border normal
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
 
-font xft:"DejaVuSansMono Nerd" 11
+# Set default font
+font pango:Hack Nerd Font 11
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # start a terminal
-$bs $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-$bs $mod+Shift+q kill
+bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d $: rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -hide-scrollbar -modi run#drun -show run -sidebar-mode
+bindsym $mod+c exec --no-startup-id urxvt -e vim ~/.config/i3/config
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
-$: volumeicon
-$bs $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
-
-################################################################################################
+exec_always --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Screen brightness controls
-$bs XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-$bs XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-$bs $mod+F3 $: nemo --no-desktop
-$bs $mod+Shift+F3 $: gksu nemo --no-desktop
-$bs $mod+t $: pkill compton
-$bs $mod+Ctrl+t $: compton -b
-$bs $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-$bs $mod+Ctrl+x --release $: xkill
+bindsym $mod+F3 exec pcmanfm --no-desktop
+bindsym $mod+Shift+F3 exec gksu pcmanfm --no-desktop
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 focus_follows_mouse yes
 
 # change focus
-$bs $mod+j focus left
-$bs $mod+k focus down
-$bs $mod+l focus up
-$bs $mod+semicolon focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-$bs $mod+Left focus left
-$bs $mod+Down focus down
-$bs $mod+Up focus up
-$bs $mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-$bs $mod+Shift+j move left
-$bs $mod+Shift+k move down
-$bs $mod+Shift+l move up
-$bs $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-$bs $mod+Shift+Left move left
-$bs $mod+Shift+Down move down
-$bs $mod+Shift+Up move up
-$bs $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-$bs $mod+b workspace back_and_forth
-$bs $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-$bs $mod+h split h;exec notify-send 'tile horizontally'
-$bs $mod+v split v;exec notify-send 'tile vertically'
-$bs $mod+q split toggle
+bindsym $mod+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
-$bs $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-$bs $mod+s layout stacking
-$bs $mod+w layout tabbed
-$bs $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-$bs $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-$bs $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-$bs $mod+Shift+s sticky toggle
+bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-$bs $mod+a focus parent
+bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
-$bs $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-$bs $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show
 
 #navigate workspaces next / previous
-$bs $mod+Ctrl+Right workspace next
-$bs $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -138,34 +131,34 @@ set $ws9   ""
 set $ws10  ""
 
 # switch to workspace
-$bs $mod+1 workspace $ws1
-$bs $mod+2 workspace $ws2
-$bs $mod+3 workspace $ws3
-$bs $mod+4 workspace $ws4
-$bs $mod+5 workspace $ws5
-$bs $mod+6 workspace $ws6
-$bs $mod+7 workspace $ws7
-$bs $mod+8 workspace $ws8
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 
 # Move focused container to workspace
-$bs $mod+Ctrl+1 move container to workspace $ws1
-$bs $mod+Ctrl+2 move container to workspace $ws2
-$bs $mod+Ctrl+3 move container to workspace $ws3
-$bs $mod+Ctrl+4 move container to workspace $ws4
-$bs $mod+Ctrl+5 move container to workspace $ws5
-$bs $mod+Ctrl+6 move container to workspace $ws6
-$bs $mod+Ctrl+7 move container to workspace $ws7
-$bs $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
 
 # Move to workspace with focused container
-$bs $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-$bs $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-$bs $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-$bs $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-$bs $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-$bs $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-$bs $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-$bs $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -178,78 +171,68 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
-for_window [class="(?)nemo"] floating enable border normal
+for_window [class="(?)Pcmanfm"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
 for_window [class="(?i)Discord"] floating enable border normal
-for_window [class="(?i)Franz"] floating enable border normal
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
 # reload the configuration file
-$bs $mod+Shift+c reload
+bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-$bs $mod+Shift+r restart
+bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-$bs $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-$bs $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    $bs l exec --no-startup-id i3exit lock, mode "default"
-    $bs s exec --no-startup-id i3exit suspend, mode "default"
-    $bs u exec --no-startup-id i3exit switch_user, mode "default"
-    $bs e exec --no-startup-id i3exit logout, mode "default"
-    $bs h exec --no-startup-id i3exit hibernate, mode "default"
-    $bs r exec --no-startup-id i3exit reboot, mode "default"
-    $bs Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    $bs Return mode "default"
-    $bs Escape mode "default"
+  bindsym l exec --no-startup-id i3exit lock, mode "default"
+  bindsym s exec --no-startup-id i3exit suspend, mode "default"
+  bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+  bindsym e exec --no-startup-id i3exit logout, mode "default"
+  bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+  bindsym r exec --no-startup-id i3exit reboot, mode "default"
+  bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+  # exit system mode: "Enter" or "Escape"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
-# Resize window (you can also use the mouse for that)
-$bs $mod+r mode "resize"
+bindsym $mod+Shift+0 mode $mode_system
+
+# Resize window
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        $bs j resize shrink width 5 px or 5 ppt
-        $bs k resize grow height 5 px or 5 ppt
-        $bs l resize shrink height 5 px or 5 ppt
-        $bs semicolon resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        $bs Left resize shrink width 10 px or 10 ppt
-        $bs Down resize grow height 10 px or 10 ppt
-        $bs Up resize shrink height 10 px or 10 ppt
-        $bs Right resize grow width 10 px or 10 ppt
-
-        # exit resize mode: Enter or Escape
-        $bs Return mode "default"
-        $bs Escape mode "default"
+  # These bindings trigger as soon as you enter the resize mode
+  bindsym j resize shrink width 5 px or 5 ppt
+  bindsym k resize grow height 5 px or 5 ppt
+  bindsym l resize shrink height 5 px or 5 ppt
+  bindsym semicolon resize grow width 5 px or 5 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  # exit resize mode: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
+
+bindsym $mod+r mode "resize"
 
 # Lock screen
-$bs $mod+9 exec --no-startup-id blurlock
+bindsym $mod+Ctrl+0 exec --no-startup-id blurlock
 
 # Autostart applications
-$: /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-$: "/usr/bin/nitrogen --restore; sleep 1; compton -b"
-$: /usr/bin/nm-applet
-$: /usr/bin/xrandr --dpi 220
-$:: $HOME/.local/bin/polybar.sh
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id "/usr/bin/nitrogen --restore; sleep 1; compton -b"
+exec --no-startup-id /usr/bin/nm-applet
 
 # Color palette used for the terminal ( ~/.Xresources file )
 set_from_resource $background background
@@ -271,62 +254,81 @@ set_from_resource $color13    color13
 set_from_resource $color14    color14
 set_from_resource $color15    color15
 
+set $background #171717
+set $text-color #686868
+set $inactive-background #171717
+set $inactive-text-color #484848
+set $urgent-background #171717
+
+client.background $background
+
 # Theme colors
 # class                 border  backgr. text    indic.   child_border
-client.focused          #556064 #556064 #80FFF9 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
-client.background       #2B2C2B
+client.focused          $background $background $text-color $background
+client.focused_inactive $inactive-background $inactive-background $inactive-text-color $inactive-background
+client.unfocused        $inactive-background $inactive-background $inactive-text-color $inactive-background
+client.urgent           $urgent-background $urgent-background $text-color $urgent-background
 
 # Set inner/outer gaps
-gaps inner 4
-gaps outer -2
+gaps inner 2
+gaps outer 0
 
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
-
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
-
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-$bs $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        $bs o      mode "$mode_gaps_outer"
-        $bs i      mode "$mode_gaps_inner"
-        $bs Return mode "default"
-        $bs Escape mode "default"
-}
+# smart_gaps on
+# smart_borders on
 
 mode "$mode_gaps_inner" {
-        $bs plus  gaps inner current plus 5
-        $bs minus gaps inner current minus 5
-        $bs 0     gaps inner current set 0
-
-        $bs Shift+plus  gaps inner all plus 5
-        $bs Shift+minus gaps inner all minus 5
-        $bs Shift+0     gaps inner all set 0
-
-        $bs Return mode "default"
-        $bs Escape mode "default"
+  bindsym plus  gaps inner current plus 2
+  bindsym minus gaps inner current minus 2
+  bindsym 0 gaps inner current set 0
+  bindsym Shift+plus gaps inner all plus 2
+  bindsym Shift+minus gaps inner all minus 2
+  bindsym Shift+0 gaps inner all set 0
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_outer" {
-        $bs plus  gaps outer current plus 5
-        $bs minus gaps outer current minus 5
-        $bs 0     gaps outer current set 0
+  bindsym plus  gaps outer current plus 2
+  bindsym minus gaps outer current minus 2
+  bindsym 0     gaps outer current set 0
+  bindsym Shift+plus  gaps outer all plus 2
+  bindsym Shift+minus gaps outer all minus 2
+  bindsym Shift+0     gaps outer all set 0
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
 
-        $bs Shift+plus  gaps outer all plus 5
-        $bs Shift+minus gaps outer all minus 5
-        $bs Shift+0     gaps outer all set 0
+mode "$mode_gaps" {
+  bindsym o mode "$mode_gaps_outer"
+  bindsym i mode "$mode_gaps_inner"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
 
-        $bs Return mode "default"
-        $bs Escape mode "default"
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+# Gap mode
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+bar {
+  status_command i3status-rs ~/.config/i3/status.toml
+  mode dock
+  position top
+  font pango:Noto Sans 10
+  tray_output primary
+  separator_symbol " | "
+  workspace_buttons yes
+
+  colors {
+    separator $text-color
+    background $background-color
+    statusline $background-color
+    
+    focused_workspace $background $background $text-color
+    active_workspace $background $background $text-color
+    inactive_workspace $inactive-background $inactive-background $inactive-text-color
+    urgent_workspace $urgent-background $urgent-background $text-color
+  }
 }
