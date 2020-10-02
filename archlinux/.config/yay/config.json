@@ -1,7 +1,7 @@
 {
 	"aururl": "https://aur.archlinux.org",
-	"buildDir": "/home/rath/.cache/yay",
-	"editor": "/usr/bin/atom",
+	"buildDir": "/home/joseph/.cache/yay",
+	"editor": "/usr/bin/vim",
 	"editorflags": "",
 	"makepkgbin": "makepkg",
 	"makepkgconf": "",
