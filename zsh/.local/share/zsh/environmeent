@@ -1,3 +1,4 @@
+export LD_LIBRARY_PATH=/usr/lib/R/library/RInside/lib:${LD_LIBRARY_PATH}
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -6,23 +7,13 @@ export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME/xdg"
 
 export XDG_PROJECT_DIR="$HOME/Projects"
 
+export ENVIRONMENT='development'
 export NODE_ENV='development'
 
 export BROWSER='chromium'
 export EDITOR='vim'
 export PAGER='less'
 export VISUAL='atom'
-if [[ $DESKTOP_SESSION == 'cinnamon' || $XDG_SESSION_DESKTOP == 'cinnamon' ]]; then
-  export TERMINAL='tilix'
-  export TERM='xterm'
-elif [[ $DESKTOP_SESSION == 'i3' || $XDG_SESSION_DESKTOP == 'i3' ]]; then
-  export TERMINAL='i3-sensible-terminal'
-  # export TERM='urxvt'
-else
-  # export TERM='urxvt'
-fi
-
-# export TERM='rxvt-unicode'
 
 export DOTFILE_DIR="$XDG_DATA_HOME/dotfiles"
 
@@ -30,8 +21,9 @@ export _JAVA_OPTIONS='-Dswing.aatext=true -Dsun.java2d.uiScale=2'
 
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
-export CFLAGS="-Wall -Wpedantic -fPIC -O2 -std=c11"
-export CXXFLAGS="-Wall -Wpedantic -fPIC -O2 -std=c++11"
+export CFLAGS="-std=c11 -pedantic -fPIC -O2 -fstack-protector -mtune=generic -pipe"
+export CXXFLAGS="-std=c++11 -pedantic -fPIC -O2 -fstack-protector -mtune=generic -pipe"
+export LDFLAGS="-fPIC"
 
 export ANSIBLE_NOCOWS='1'
 export ATOM_HOME="$XDG_DATA_HOME/atom"

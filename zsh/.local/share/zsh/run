@@ -1,6 +1,6 @@
 typeset -U path
 
-HISTFILE="$ZDOTDIR"/histfile
+HISTFILE="$XDG_CACHE_HOME"/zsh_histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob
@@ -17,16 +17,14 @@ autoload -U is-at-least
 autoload -U clear-scrollback-buffer
 autoload -U load-nvm
 
-path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin" "/var/lib/snapd/snap/bin")
+path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin")
 
 [ -s "$HOME/.profile" ] && \. "$HOME/.profile" 
 [ -s /usr/bin/value ] && complete -o nospace -C /usr/bin/vault vault
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
-[ -s "$XDG_DATA_HOME/rvm/scripts/rvm" ] && \. "$XDG_DATA_HOME/rvm/scripts/rvm"
-[ -d "$XDG_DATA_HOME/pyenv" ] && path+=("$PYENV_ROOT/bin") && eval "$(pyenv init -)"
-[ command -v pyenv virtualenv-init 1>/dev/null 2>&1 ] && "$(pyenv virtualenv-init -)"
+[ -d "$XDG_DATA_HOME/pyenv" ] && path+=("$PYENV_ROOT/bin") && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 
 source "$XDG_DATA_HOME/zsh/alias"
 
@@ -45,7 +43,6 @@ omz_plugins=(
   'plugins/colored-man-pages'
   'plugins/command-not-found'
   'plugins/cp'
-  'plugins/dotenv'
   'plugins/extract'
   'plugins/git'
   'plugins/git-extras'
@@ -77,6 +74,8 @@ zplug load
 zstyle :omz:plugins:keychain agents gpg,ssh
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts \
   'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+eval "$(direnv hook zsh)"
 
 zle -N clear-scrollback-buffer
 bindkey '^L' clear-scrollback-buffer

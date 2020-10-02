@@ -107,3 +107,5 @@ alias editor=vim
 # Fix tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias "git commit"="git add . && git commit"
+alias clean_history='echo "" > ~/$XDG_CACHE_HOME/zsh_histfile && exec $SHELL -l'
+alias clean_docker_images="docker rmi $(docker images | grep "^<none>" | awk "{print $3}")"
