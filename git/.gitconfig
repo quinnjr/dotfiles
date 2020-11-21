@@ -1,11 +1,14 @@
 [user]
 	email = 423821+quinnjr@users.noreply.github.com
-	name = Joseph R. Quinn
+	name = Joseph Quinn
 [http "https://gopkg.in"]
 	followRedirects = true
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = /usr/bin/nvim
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [tag]
 	forceSignAnnotated = true
+[code]
+	editor = /usr/bin/nvim

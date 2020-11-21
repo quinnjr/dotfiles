@@ -20,13 +20,12 @@ autoload -U load-nvm
 path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin")
 
 [ -s "$HOME/.profile" ] && \. "$HOME/.profile" 
-[ -s /usr/bin/value ] && complete -o nospace -C /usr/bin/vault vault
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
 [ -d "$XDG_DATA_HOME/pyenv" ] && path+=("$PYENV_ROOT/bin") && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
 
-source "$XDG_DATA_HOME/zsh/alias"
+[ -s "$XDG_DATA_HOME/zsh/alias" ] && \. "$XDG_DATA_HOME/zsh/alias"
 
 source "$ZPLUG_HOME/init.zsh"
 
@@ -39,24 +38,14 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'b4b4r07/enhancd', use:init.sh
 
 omz_plugins=(
-  'plugins/archlinux'
   'plugins/colored-man-pages'
   'plugins/command-not-found'
-  'plugins/cp'
   'plugins/extract'
   'plugins/git'
   'plugins/git-extras'
   'plugins/git-flow-avh'
   'plugins/gitignore'
-  'plugins/golang'
-  'plugins/heroku'
-  'plugins/jump'
   'plugins/keychain'
-  'plugins/nvm'
-  'plugins/rust'
-  'plugins/sudo'
-  'plugins/systemd'
-  'plugins/vagrant'
 )
 
 for plugin in $omz_plugins; do

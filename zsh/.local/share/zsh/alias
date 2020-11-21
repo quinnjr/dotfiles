@@ -5,43 +5,13 @@ fi
 # Change Maven's default global settings directory
 alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
 
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
-alias svim='/usr/bin/sudo -E /usr/bin/vim -u "$VIMRC"'
+alias svim='/usr/bin/sudo -E /usr/bin/nvim -u "$VIMRC"'
 
 alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 
-alias grep='grep --color'
-alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS}'
-
-alias t='tail -f'
-
 # Command line head / tail shortcuts
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g L="| less"
-alias -g M="| most"
-alias -g LL="2>&1 | less"
-alias -g CA="2>&1 | cat -A"
-alias -g NE="2> /dev/null"
-alias -g NUL="> /dev/null 2>&1"
-alias -g P="2>&1| pygmentize -l pytb"
-
-alias dud='du -d 1 -h'
-alias duf='du -sh *'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
-
-alias h='history'
-alias hgrep="fc -El 0 | grep"
-alias help='man'
-alias p='ps -f'
-alias sortnr='sort -n -r'
-alias unexport='unset'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -65,20 +35,6 @@ if is-at-least 4.2.0; then
 
   _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
   for ft in $_media_fts; do alias -s $ft=mplayer; done
-
-  #read documents
-  alias -s pdf=acroread
-  alias -s ps=gv
-  alias -s dvi=xdvi
-  alias -s chm=xchm
-  alias -s djvu=djview
-
-  #list whats inside packed file
-  alias -s zip="unzip -l"
-  alias -s rar="unrar l"
-  alias -s tar="tar tf"
-  alias -s tar.gz="echo "
-  alias -s ace="unace l"
 fi
 
 # Alias exa over GNU ls
@@ -90,9 +46,6 @@ alias ldot='exa -lgd .*'
 
 alias mkdir='mkdir -p'
 
-alias crates='cargo'
-alias 'cargo check'='clear && cargo check'
-
 alias gpu_off='sudo tee /proc/acpi/bbswitch <<<OFF'
 alias gpu_on='sudo tee /proc/acpi/bbswitch <<<ON'
 
@@ -101,11 +54,16 @@ alias fsi='fsharpi'
 alias feh='feh --scale-down --auto-zoom'
 
 # Break the bad habit, become an Internet Wizard
-alias nano=vim
-alias editor=vim
+alias nano="nvim"
+alias vim="nvim"
+alias editor="nvim"
 
 # Fix tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-alias "git commit"="git add . && git commit"
 alias clean_history='echo "" > ~/$XDG_CACHE_HOME/zsh_histfile && exec $SHELL -l'
-alias clean_docker_images="docker rmi $(docker images | grep "^<none>" | awk "{print $3}")"
+
+alias du="dust"
+alias sed="sd"
+alias top="btm"
+alias htop="btm"
+alias grep="rg"

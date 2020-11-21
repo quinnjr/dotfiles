@@ -4,6 +4,8 @@ set backupdir=$XDG_CACHE_HOME/vim/backup
 set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set number
+set ttyfast
+set lazyredraw
 set clipboard=unnamedplus
 
 set nocompatible
@@ -19,22 +21,14 @@ Plugin 'bling/vim-airline'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-" Plugin 'fsharp/vim-fsharp'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tpope/vim-fugitive'
 Plugin 'preservim/nerdcommenter'
 Plugin 'junegunn/fzf'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'elzr/vim-json'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'rust-lang/rust.vim'
-Plugin 'thaerkh/vim-workspace'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'preservim/nerdtree'
-Plugin 'mattn/gist-vim'
 Plugin 'ekalinin/dockerfile.vim'
 
 call vundle#end()
