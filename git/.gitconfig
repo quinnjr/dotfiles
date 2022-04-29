@@ -12,3 +12,7 @@
 	forceSignAnnotated = true
 [code]
 	editor = /usr/bin/nvim
+[pull]
+	rebase = false
+[safe]
+	directory = /opt/flutter

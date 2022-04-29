@@ -96,7 +96,7 @@ if ! type 'stow' &> /dev/null; then
 fi
 
 if [ ! -d "$XDG_DATA_HOME/vim/bundle/Vundle.vim" ]; then
-  git clone https://github.com/VundleVime/Vundle.vim.git \
+  git clone https://github.com/VundleVime/Vundle.vim \
     "$XDG_DATA_HOME/vim/bundle/Vundle.vim"
   vim +PluginInstall +qall
 fi
@@ -112,11 +112,6 @@ if [ _arg_with_archlinux == 'on' ]; then
 	stow -t "$HOME" archlinux
 	stow -t "$HOME" nvidia
 	stow -t "$HOME" systemd
-done
-
-if [ _arg_with_atom == 'on' ]; then
-	stow -t "$HOME" atom
-  ln -s "$HOME"/.atom "$XDG_DATA_HOME"/atom
 done
 
 if [ _arg_with-cinnamon == 'on' ]; then

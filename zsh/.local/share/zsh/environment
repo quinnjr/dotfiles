@@ -13,7 +13,7 @@ export NODE_ENV='development'
 export BROWSER='chromium'
 export EDITOR='nvim'
 export PAGER='less'
-export VISUAL='atom'
+export VISUAL='code'
 
 export DOTFILE_DIR="$XDG_DATA_HOME/dotfiles"
 

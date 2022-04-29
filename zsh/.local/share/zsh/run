@@ -17,7 +17,7 @@ autoload -U is-at-least
 autoload -U clear-scrollback-buffer
 autoload -U load-nvm
 
-path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin")
+path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin" "/var/lib/snapd/snap/bin")
 
 [ -s "$HOME/.profile" ] && \. "$HOME/.profile" 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

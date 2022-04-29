@@ -1,1 +1,1 @@
-.local/share/zsh/environmeent
+.local/share/zsh/environment
