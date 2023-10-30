@@ -17,14 +17,15 @@ autoload -U is-at-least
 autoload -U clear-scrollback-buffer
 autoload -U load-nvm
 
-path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin" "/var/lib/snapd/snap/bin")
+path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin" "/var/lib/snapd/snap/bin" "$XDG_DATA_HOME/pnpm" "$PYENV_ROOT/bin" "/opt/dart-sdk/bin")
 
-[ -s "$HOME/.profile" ] && \. "$HOME/.profile" 
+[ -s "$HOME/.profile" ] && \. "$HOME/.profile"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
-[ -d "$XDG_DATA_HOME/pyenv" ] && path+=("$PYENV_ROOT/bin") && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
-
+# [ -d "$XDG_DATA_HOME/pyenv" ] && eval "$(pyenv init -)"
+# [ -d "$(pyenv root)/plugins/pyenv-virtualenv" ] && eval "$(pyenv virtualenv-init -)"
+[ -d "$XDG_DATA_HOME/rvm" ] && \. "$XDG_DATA_HOME/rvm/scripts/rvm"
 [ -s "$XDG_DATA_HOME/zsh/alias" ] && \. "$XDG_DATA_HOME/zsh/alias"
 
 source "$ZPLUG_HOME/init.zsh"
@@ -36,6 +37,7 @@ zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
 zplug 'b4b4r07/enhancd', use:init.sh
+zplug 'Tarrasch/zsh-autoenv'
 
 omz_plugins=(
   'plugins/colored-man-pages'
@@ -68,3 +70,8 @@ eval "$(direnv hook zsh)"
 
 zle -N clear-scrollback-buffer
 bindkey '^L' clear-scrollback-buffer
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)

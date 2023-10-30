@@ -1,7 +1,6 @@
 alias vim='nvim'
 alias chromium='google-chrome-stable'
 alias du='dust'
-alias sed='sd'
 alias ps='procs'
 alias find='fd'
 alias cat='bat'
