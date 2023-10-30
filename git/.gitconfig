@@ -1,13 +1,13 @@
 [user]
 	email = 423821+quinnjr@users.noreply.github.com
-	name = Joseph Quinn
+	name = Joseph R. Quinn
 [http "https://gopkg.in"]
 	followRedirects = true
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = /usr/bin/nvim
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+	helper = store
 [tag]
 	forceSignAnnotated = true
 [code]
@@ -16,3 +16,5 @@
 	rebase = false
 [safe]
 	directory = /opt/flutter
+[init]
+	defaultBranch = main

@@ -1,4 +1,7 @@
-if [[ -f "$HOME/.profile" ]]; then
-  source "$HOME/.profile"
+if [ -f $HOME/.profile ]; then
+  source $HOME/.profile
 fi
-eval "$(pyenv init --path)"
+
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# [ -d "$XDG_DATA_HOME/pyenv" ] && eval "$(pyenv init -)"
+# [ -d "$(pyenv root)/plugins/pyenv-virtualenv" ] && eval "$(pyenv virtualenv-init -)"
