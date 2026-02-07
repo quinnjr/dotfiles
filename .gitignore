@@ -1,2 +1,3 @@
 .secrets
 zsh/.local/share/zsh/zplug/
+tmux/.local/share/tmux/plugins/

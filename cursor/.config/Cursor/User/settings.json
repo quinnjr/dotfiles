@@ -1,0 +1,11 @@
+{
+    "window.commandCenter": 1,
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.iconTheme": "vscode-icons",
+    "git.openRepositoryInParentFolders": "never",
+    "python.createEnvironment.trigger": "off",
+    "makefile.configureOnOpen": false,
+    "git.blame.statusBarItem.enabled": false,
+    "window.resoreWindows": "none",
+    "cursor.general.openAiBaseUrl": "http://127.0.0.1:8012/v1"
+}
