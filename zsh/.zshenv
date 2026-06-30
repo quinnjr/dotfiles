@@ -1,1 +1,107 @@
-.local/share/zsh/environment
+export LD_LIBRARY_PATH="/usr/lib/R/site-library/RInside/lib:/usr/lib/R/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS='/usr/local/share:/usr/share'
+export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_HOME/xdg"
+
+export XDG_PROJECT_DIR="$HOME/Projects"
+export XDG_RUNTIME_DIR="/run/user/$UID"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+
+export ENVIRONMENT='development'
+export NODE_ENV='development'
+
+export BROWSER='vivaldi'
+export EDITOR='nvim'
+export PAGER='less'
+export VISUAL='code'
+
+export DOCKER_BUILDKIT=1
+
+export CHROOT="$HOME/AUR/chroot"
+
+export DOTFILE_DIR="$XDG_DATA_HOME/dotfiles"
+
+export _JAVA_OPTIONS='-Dswing.aatext=true -Dsun.java2d.uiScale=2'
+
+export CC="/usr/bin/clang"
+export CXX="/usr/bin/clang++"
+export CFLAGS="-std=c11 -pedantic -fPIC -O2 -fstack-protector -mtune=generic"
+export CXXFLAGS="-std=c++17 -pedantic -fPIC -O2 -fstack-protector -mtune=generic"
+export LDFLAGS="-fPIC"
+
+export ANSIBLE_NOCOWS='1'
+
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CHROMIUM_USER_FLAGS="--force-device-scale-factor=2 --cipher-suite-blacklist=0x0001,0x0002,0x0004,0x0005,0x0017,0x0018,0xc002,0xc007,0xc00c,0xc011,0xc016,0xff80,0xff81,0xff82,0xff83"
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DVDCSS_CACHE="$XDG_DATA_HOME/dvdcss"
+
+export ENHANCD_DIR="$XDG_DATA_HOME/enhancd"
+
+export GIT_MERGE_AUTOEDIT='no'
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GPG_TTY=$(tty)
+export GOBIN="$HOME/Projects/go-workspace/bin"
+export GOPATH="$HOME/Projects/go-workspace"
+export GOSRC="$HOME/Projects/go-workspace/src"
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export GTK3_RC_FILES="$XDG_CONFIG_HOME/gtk-3.0/gtkrc"
+
+export LANG=en_US.UTF-8
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
+
+export MAKEFLAGS="-j $(nproc)"
+export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql_history"
+
+export NODE_ENV='development'
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCREEN_SCALE_FACTORS=1
+
+export RANDFILE="$XDG_RUNTIME_DIR/rnd"
+export RUST_SRC_PATH="$XDG_DATA_HOME/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+export SAL_USE_VCLPLUGIN='gtk'
+export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+# Prefer the terminal for passphrase prompts; gcr4-ssh-askpass refuses to be run
+# directly by ssh-add, which breaks `ssh-add` when DISPLAY is set.
+export SSH_ASKPASS_REQUIRE=never
+
+export RVM_PATH="$XDG_DATA_HOME/rvm"
+export rvm_path="$RVM_PATH"
+export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
+
+# Neovim uses its own config at ~/.config/nvim/init.lua
+# Legacy vim config (only used if running actual vim, not nvim)
+export VIMINIT='if !has("nvim") | let $VIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $VIMRC | endif'
+export VIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
+export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME/zplug"
+export ZPLUG_HOME="$XDG_DATA_HOME/zsh/zplug"
+export ZSH_HOME="$XDG_DATA_HOME/zsh"
+
+export BUN_INSTALL="$HOME/.bun"
+
+export SSH_NO_PQ_WARNING=1
+
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin

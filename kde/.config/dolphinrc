@@ -1,6 +1,16 @@
+[CompactMode]
+IconSize=80
+
 [General]
+BrowseThroughArchives=true
+GlobalViewProps=false
+OpenExternallyCalledFolderInNewTab=true
+ShowFullPathInTitlebar=true
 Version=202
 ViewPropsTimestamp=2026,1,9,15,44,9.531
+
+[IconsMode]
+IconSize=80
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -8,3 +18,9 @@ Places Icons Static Size=22
 
 [MainWindow]
 MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,glycin-heif,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,glycin-image-rs,jpegthumbnail,glycin-jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,glycin-svg,svgthumbnail,textthumbnail,ffmpegthumbs,exe-thumbnailer
+
+[Search]
+Location=Everywhere

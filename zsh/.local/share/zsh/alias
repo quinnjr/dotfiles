@@ -63,7 +63,6 @@ alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias clean_history='echo "" > ~/$XDG_CACHE_HOME/zsh_histfile && exec $SHELL -l'
 
 alias du="dust"
-alias sed="sd"
 alias top="btm"
 alias htop="btm"
 alias grep="rg"

@@ -1,0 +1,179 @@
+/* =========================================
+   Waybar — Windows 11 Fluent Design
+   ========================================= */
+
+@define-color bg        rgba(20, 20, 20, 0.85);
+@define-color bg-hover  rgba(255, 255, 255, 0.08);
+@define-color bg-active rgba(0, 103, 192, 0.9);
+@define-color fg        #ffffff;
+@define-color fg-dim    rgba(255, 255, 255, 0.6);
+@define-color accent    #0067C0;
+@define-color warn      #f0a500;
+@define-color crit      #e74c3c;
+@define-color border    rgba(255, 255, 255, 0.08);
+
+* {
+    font-family: "Noto Sans", "Symbols Nerd Font Mono", sans-serif;
+    font-size:   13px;
+    min-height:  0;
+    border:      none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background:    @bg;
+    border:        1px solid @border;
+    border-radius: 10px;
+    color:         @fg;
+}
+
+/* ---- Modules shared ---- */
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 4px;
+}
+
+/* Generic module pill */
+#custom-start,
+#hyprland-workspaces,
+#hyprland-window,
+#clock,
+#tray,
+#network,
+#pulseaudio,
+#battery,
+#custom-power {
+    padding:       2px 10px;
+    margin:        4px 2px;
+    border-radius: 6px;
+    color:         @fg;
+    background:    transparent;
+    transition:    background 150ms ease;
+}
+
+/* Hover state */
+#custom-start:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-power:hover {
+    background: @bg-hover;
+}
+
+/* ---- Start button ---- */
+#custom-start {
+    font-size:   18px;
+    padding:     2px 12px;
+    color:       @accent;
+}
+
+#custom-start:hover {
+    color:       #1a8cff;
+    background:  @bg-hover;
+}
+
+/* ---- Workspaces ---- */
+#hyprland-workspaces button {
+    padding:       2px 8px;
+    margin:        2px 1px;
+    border-radius: 6px;
+    color:         @fg-dim;
+    background:    transparent;
+    font-size:     12px;
+    min-width:     28px;
+    transition:    all 150ms ease;
+}
+
+#hyprland-workspaces button:hover {
+    background: @bg-hover;
+    color:      @fg;
+}
+
+#hyprland-workspaces button.active {
+    background: @bg-active;
+    color:      @fg;
+    font-weight: bold;
+}
+
+#hyprland-workspaces button.urgent {
+    background: @crit;
+    color:      @fg;
+}
+
+/* ---- Window title ---- */
+#hyprland-window {
+    color:      @fg-dim;
+    font-size:  12px;
+    max-width:  260px;
+}
+
+/* ---- Clock ---- */
+#clock {
+    font-weight: 600;
+    font-size:   14px;
+    letter-spacing: 0.5px;
+}
+
+/* ---- Tray ---- */
+#tray {
+    padding: 2px 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background:       rgba(247, 167, 0, 0.2);
+    border-radius:    6px;
+}
+
+/* ---- Network ---- */
+#network.disconnected {
+    color: @fg-dim;
+}
+
+/* ---- Audio ---- */
+#pulseaudio.muted {
+    color: @fg-dim;
+}
+
+/* ---- Battery ---- */
+#battery.warning {
+    color: @warn;
+}
+
+#battery.critical {
+    color: @crit;
+}
+
+#battery.charging {
+    color: #2ecc71;
+}
+
+/* ---- Power button ---- */
+#custom-power {
+    font-size: 16px;
+    color:     @fg-dim;
+    padding:   2px 12px;
+}
+
+#custom-power:hover {
+    color:      @crit;
+    background: rgba(231, 76, 60, 0.15);
+}
+
+/* ---- Tooltips ---- */
+tooltip {
+    background:   rgba(20, 20, 20, 0.95);
+    border:       1px solid @border;
+    border-radius: 8px;
+    color:        @fg;
+    padding:      8px 12px;
+}
+
+tooltip label {
+    color: @fg;
+}

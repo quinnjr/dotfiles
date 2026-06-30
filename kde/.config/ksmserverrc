@@ -1,7 +1,10 @@
 [LegacySession: saved at previous logout]
-clientMachine1=localhost
-command1=conky,-d
-count=1
+count=0
 
 [Session: saved at previous logout]
-count=0
+clientId1=10c2efd872000178250637600000096540001
+count=1
+program1=/opt/piavpn/bin/pia-client
+restartCommand1=/opt/piavpn/bin/pia-client,-session,10c2efd872000178250637600000096540001_1782771845_875774
+restartStyleHint1=0
+userId1=joseph

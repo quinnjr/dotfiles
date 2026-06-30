@@ -1,0 +1,22 @@
+{
+    "window.commandCenter": 1,
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.iconTheme": "vscode-icons",
+    "git.openRepositoryInParentFolders": "never",
+    "python.createEnvironment.trigger": "off",
+    "makefile.configureOnOpen": false,
+    "git.blame.statusBarItem.enabled": false,
+    "window.resoreWindows": "none",
+    "cursor.general.openAiBaseUrl": "http://spark.local:8080/v1",
+    "rust-analyzer.server.extraEnv": {
+        "MALLOC_ARENA_MAX": "2"
+    },
+    "rust-analyzer.checkOnSave": false,
+    "remote.SSH.remotePlatform": {
+        "astarte": "linux"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "svelte.enable-ts-plugin": true,
+    "python.terminal.activateEnvironment": false,
+    "claudeCode.allowDangerouslySkipPermissions": true
+}

@@ -1,6 +1,15 @@
 [Applications][brave-browser]
 Seen=true
 
+[Applications][code-oss]
+Seen=true
+
+[Applications][com.anthropic.claude-desktop]
+Seen=true
+
+[Applications][com.mattermost.Desktop]
+Seen=true
+
 [Applications][com.usebottles.bottles]
 Seen=true
 
@@ -10,7 +19,13 @@ Seen=true
 [Applications][discord]
 Seen=true
 
+[Applications][firefox]
+Seen=true
+
 [Applications][org.qbittorrent.qBittorrent]
+Seen=true
+
+[Applications][org.telegram.desktop]
 Seen=true
 
 [Applications][slack_slack]

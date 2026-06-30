@@ -1,3 +1,15 @@
+function claude() {
+  local args=()
+  for arg in "$@"; do
+    if [[ "$arg" == "--fuckit" ]]; then
+      args+=("--allow-dangerously-skip-permissions")
+    else
+      args+=("$arg")
+    fi
+  done
+  command claude "${args[@]}"
+}
+
 alias vim='nvim'
 alias chromium='google-chrome-stable'
 alias du='dust'

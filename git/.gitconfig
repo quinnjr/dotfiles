@@ -1,6 +1,7 @@
 [user]
 	email = 423821+quinnjr@users.noreply.github.com
 	name = Joseph R. Quinn
+	signingkey = D98C3F305E74B9E3
 [http "https://gopkg.in"]
 	followRedirects = true
 [core]
@@ -10,6 +11,7 @@
 	helper = store
 [tag]
 	forceSignAnnotated = true
+	gpgsign = true
 [code]
 	editor = /usr/bin/nvim
 [pull]
@@ -35,3 +37,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[commit]
+	gpgsign = true

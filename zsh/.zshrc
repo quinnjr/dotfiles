@@ -37,8 +37,8 @@ path+=("$HOME/.local/bin" "$XDG_DATA_HOME/cargo/bin" "/var/lib/snapd/snap/bin" "
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -s "/usr/share/doc/find-the-command/ftc.zsh" ] && \. "/usr/share/doc/find-the-command/ftc.zsh"
-# [ -d "$XDG_DATA_HOME/pyenv" ] && eval "$(pyenv init -)"
-# [ -d "$(pyenv root)/plugins/pyenv-virtualenv" ] && eval "$(pyenv virtualenv-init -)"
+[ -d "$XDG_DATA_HOME/pyenv" ] && eval "$(pyenv init -)"
+[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ] && eval "$(pyenv virtualenv-init -)"
 [ -d "$XDG_DATA_HOME/rvm" ] && \. "$XDG_DATA_HOME/rvm/scripts/rvm"
 [ -s "$XDG_DATA_HOME/zsh/alias" ] && \. "$XDG_DATA_HOME/zsh/alias"
 
@@ -61,8 +61,6 @@ omz_plugins=(
   'plugins/git-extras'
   'plugins/git-flow-avh'
   'plugins/gitignore'
-  'plugins/keychain'
-  'plugins/ssh-agent'
 )
 
 for plugin in $omz_plugins; do
@@ -90,21 +88,11 @@ if (( ${+functions[__enhancd::cd]} )); then
   }
 fi
 
-# SSH Agent Configuration using keychain
-# Keychain manages ssh-agent and caches passphrases across terminal sessions
-# ksshaskpass provides GUI password prompts via KDE Wallet
-export SSH_ASKPASS=/usr/bin/ksshaskpass
+# SSH agent: gcr-ssh-agent owns SSH_AUTH_SOCK (set in ~/.zshenv and
+# ~/.config/environment.d/ssh.conf); key passphrases live in the GNOME login
+# keyring. Use the gcr askpass so prompts integrate with the keyring.
+export SSH_ASKPASS=/usr/lib/gcr4-ssh-askpass
 export SSH_ASKPASS_REQUIRE=prefer
-
-eval $(keychain --eval --quiet --agents ssh \
-    ~/.ssh/id_ed25519 \
-    ~/.ssh/github \
-    ~/.ssh/bitbucket \
-    2>/dev/null)
-
-# Oh-my-zsh keychain plugin configuration
-zstyle :omz:plugins:keychain agents ssh
-zstyle :omz:plugins:keychain identities id_ed25519 github bitbucket
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts \
   'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
@@ -135,6 +123,10 @@ esac
 
 # Aliases
 alias gitclean='git fetch -p && git branch -vv | grep ": gone]" | awk "{print \$1}" | xargs git branch -D'
+alias bedrock="source ~/.local/bin/toggle-bedrock"
+
+# Remove interactive flags from core commands
+unalias rm mv cp 2>/dev/null
 
 # Wrapper for rg: AI tools keep passing grep's -E flag which rg treats as --encoding.
 # Strip -E and its argument so rg doesn't choke.
@@ -150,4 +142,21 @@ rg() {
   command rg "${args[@]}"
 }
 
-[ -f "${0:A:h}/.secrets" ] && source "${0:A:h}/.secrets"
+[ -f "$HOME/.local/share/dotfiles/zsh/.secrets" ] && source "$HOME/.local/share/dotfiles/zsh/.secrets"
+
+# Refresh Advita AWS MFA short-term credentials using the TOTP secret in `pass`.
+advita-aws-login() {
+  ~/.local/bin/aws-mfa-auto --profile advita --secret "$(pass show aws/mfa-secret)" "$@"
+}
+
+# claude-profile: manage Claude Code configuration profiles
+. "${XDG_DATA_HOME:-$HOME/.local/share}/claude-profile/claude-profile.sh"
+
+# ripgrep: consume GNU grep -E so it behaves like --extended-regexp
+. "$HOME/.local/share/ripgrep-alias/rg.sh"
+
+# zoxide: smart cd replacement with frecency-based directory jumping
+eval "$(zoxide init zsh --cmd cd)"
+
+# opencode
+export PATH=/home/joseph/.opencode/bin:$PATH

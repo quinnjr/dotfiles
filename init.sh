@@ -14,7 +14,7 @@ fi
 DOTFILE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Core components — always stowed
-for component in git gtk kde tmux cursor claude nvim gh bottom conky fish misc rustup zsh; do
+for component in git gtk kde tmux code claude nvim gh bottom conky fish misc rustup zsh hypr waybar rofi dunst kitty; do
   if [ -d "$DOTFILE_DIR/$component" ]; then
     echo "Stowing $component..."
     stow -d "$DOTFILE_DIR" -t "$HOME" --adopt "$component"

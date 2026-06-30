@@ -1,0 +1,121 @@
+{
+    // Win11-inspired taskbar: bottom, centered, translucent
+    "layer": "top",
+    "position": "bottom",
+    "height": 44,
+    "margin-bottom": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 4,
+    "exclusive": true,
+
+    "modules-left": [
+        "custom/start",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "network",
+        "pulseaudio",
+        "battery",
+        "custom/power"
+    ],
+
+    "custom/start": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "rofi -show drun -theme ~/.config/rofi/win11.rasi"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "active": "",
+            "default": ""
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        "show-special": false
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": " $1",
+            "(.*) - Visual Studio Code": "󰨞 $1",
+            "(.*)kitty(.*)": " Terminal"
+        }
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %B %-d, %Y  %H:%M:%S}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "format": {
+                "today": "<span color='#0067C0'><b>{}</b></span>"
+            }
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8,
+        "show-passive-items": true
+    },
+
+    "network": {
+        "format-wifi":          " {essid}",
+        "format-ethernet":      "󰈀 {ifname}",
+        "format-disconnected":  "󰤭 ",
+        "format-linked":        "󰈀 {ifname}",
+        "tooltip-format-wifi":  " {essid} ({signalStrength}%)\n↑ {bandwidthUpBytes}  ↓ {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\n↑ {bandwidthUpBytes}  ↓ {bandwidthDownBytes}",
+        "on-click": "nm-connection-editor",
+        "interval": 3
+    },
+
+    "pulseaudio": {
+        "format":        "{icon} {volume}%",
+        "format-muted":  "󰖁 muted",
+        "format-icons":  {
+            "headphone": "󰋋",
+            "default":   ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click":       "pavucontrol",
+        "on-scroll-up":   "pamixer -i 2",
+        "on-scroll-down": "pamixer -d 2",
+        "smooth-scrolling-threshold": 1
+    },
+
+    "battery": {
+        "interval": 30,
+        "states": { "warning": 25, "critical": 10 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+        "tooltip-format": "{timeTo}\n{power}W"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout 2>/dev/null || (echo 'logout?'; hyprctl dispatch exit 0)"
+    }
+}

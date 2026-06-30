@@ -2,3 +2,4 @@ zsh/.local/share/zsh/zplug/
 tmux/.local/share/tmux/plugins/
 claude/.claude/mcp.json
 claude/.claude/credentials.json
+zsh/.secrets

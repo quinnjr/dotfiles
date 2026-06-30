@@ -14,6 +14,7 @@
                 "highDynamicRange": false,
                 "iccProfilePath": "",
                 "mode": {
+                    "flags": 0,
                     "height": 768,
                     "refreshRate": 59999,
                     "width": 1024
@@ -29,21 +30,41 @@
                 "wideColorGamut": false
             },
             {
+                "abmLevel": 0,
                 "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": false,
+                "autoBrightnessCurve": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
                 "autoRotation": "InTabletMode",
+                "automaticBrightness": false,
                 "brightness": 0.75,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-1",
+                "connectorName": "DP-3",
+                "customModes": [
+                ],
                 "detectedDdcCi": true,
                 "edidHash": "dfcd8a25674beb21469e66203fa450ec",
                 "edidIdentifier": "DEL 41480 809846860 38 2023 0",
                 "edrPolicy": "always",
+                "hdrColorProfileSource": "EDID",
+                "hdrIccProfilePath": "",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
                 "maxBitsPerColor": 0,
                 "mode": {
+                    "flags": 0,
                     "height": 1440,
                     "refreshRate": 239970,
                     "width": 2560
@@ -53,27 +74,48 @@
                 "scale": 1,
                 "sdrBrightness": 500,
                 "sdrGamutWideness": 0,
+                "sharpness": 0,
                 "transform": "Normal",
                 "uuid": "7654e38a-458e-45f8-a475-a030ddaf3ce8",
                 "vrrPolicy": "Never",
                 "wideColorGamut": false
             },
             {
+                "abmLevel": 0,
                 "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": false,
+                "autoBrightnessCurve": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
                 "autoRotation": "InTabletMode",
+                "automaticBrightness": false,
                 "brightness": 0.75,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-3",
+                "connectorName": "DP-1",
+                "customModes": [
+                ],
                 "detectedDdcCi": true,
                 "edidHash": "5c2401fefd10ea2f309b890844c2d8e8",
                 "edidIdentifier": "DEL 41480 809845324 38 2023 0",
                 "edrPolicy": "always",
+                "hdrColorProfileSource": "EDID",
+                "hdrIccProfilePath": "",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
                 "maxBitsPerColor": 0,
                 "mode": {
+                    "flags": 0,
                     "height": 1440,
                     "refreshRate": 239970,
                     "width": 2560
@@ -83,6 +125,7 @@
                 "scale": 1,
                 "sdrBrightness": 500,
                 "sdrGamutWideness": 0,
+                "sharpness": 0,
                 "transform": "Normal",
                 "uuid": "97620814-10fe-48e6-9187-0a4ab380f239",
                 "vrrPolicy": "Never",
@@ -118,7 +161,7 @@
                             "x": 2560,
                             "y": 0
                         },
-                        "priority": 1,
+                        "priority": 2,
                         "replicationSource": ""
                     },
                     {
@@ -128,7 +171,7 @@
                             "x": 0,
                             "y": 0
                         },
-                        "priority": 0,
+                        "priority": 1,
                         "replicationSource": ""
                     }
                 ]
