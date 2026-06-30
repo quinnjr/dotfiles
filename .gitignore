@@ -3,3 +3,4 @@ tmux/.local/share/tmux/plugins/
 claude/.claude/mcp.json
 claude/.claude/credentials.json
 zsh/.secrets
+misc/.config/composer/
