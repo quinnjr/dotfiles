@@ -79,10 +79,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 export SAL_USE_VCLPLUGIN='gtk'
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
-# Prefer the terminal for passphrase prompts; gcr4-ssh-askpass refuses to be run
-# directly by ssh-add, which breaks `ssh-add` when DISPLAY is set.
-export SSH_ASKPASS_REQUIRE=never
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 export RVM_PATH="$XDG_DATA_HOME/rvm"
 export rvm_path="$RVM_PATH"

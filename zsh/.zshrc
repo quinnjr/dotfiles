@@ -94,10 +94,9 @@ if (( ${+functions[__enhancd::cd]} )); then
   }
 fi
 
-# SSH agent: gcr-ssh-agent owns SSH_AUTH_SOCK (set in ~/.zshenv and
-# ~/.config/environment.d/ssh.conf); key passphrases live in the GNOME login
-# keyring. Use the gcr askpass so prompts integrate with the keyring.
-export SSH_ASKPASS=/usr/lib/gcr4-ssh-askpass
+# SSH agent: standard ssh-agent owns SSH_AUTH_SOCK (set in ~/.zshenv and
+# ~/.config/environment.d/ssh.conf). Use Plasma's ksshaskpass for prompts.
+export SSH_ASKPASS=/usr/bin/ksshaskpass
 export SSH_ASKPASS_REQUIRE=prefer
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts \
   'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
