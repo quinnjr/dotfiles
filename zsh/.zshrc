@@ -149,9 +149,9 @@ rg() {
 
 [ -f "$HOME/.local/share/dotfiles/zsh/.secrets" ] && source "$HOME/.local/share/dotfiles/zsh/.secrets"
 
-# Refresh Advita AWS MFA short-term credentials using the TOTP secret in `pass`.
+# Refresh Advita AWS MFA short-term credentials using the TOTP secret in libsecret.
 advita-aws-login() {
-  ~/.local/bin/aws-mfa-auto --profile advita --secret "$(pass show aws/mfa-secret)" "$@"
+  ~/.local/bin/aws-mfa-auto --profile advita --secret "$(secret-tool lookup service aws key mfa-secret)" "$@"
 }
 
 # claude-profile: manage Claude Code configuration profiles
