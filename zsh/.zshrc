@@ -67,6 +67,12 @@ for plugin in $omz_plugins; do
   zplug $plugin, from:oh-my-zsh
 done
 
+# lib/git.zsh (pulled in as a dependency of the theme) needs
+# _omz_register_handler from lib/async_prompt.zsh, but zplug's dependency
+# scanner only resolves functions used by the theme itself, so load it
+# explicitly to avoid "command not found: _omz_register_handler" at precmd.
+zplug 'lib/async_prompt', from:oh-my-zsh
+
 zplug 'themes/gallifrey', from:oh-my-zsh, as:theme
 
 if ! zplug check; then
