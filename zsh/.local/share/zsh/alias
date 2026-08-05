@@ -66,3 +66,9 @@ alias du="dust"
 alias top="btm"
 alias htop="btm"
 alias grep="rg"
+
+# Modern replacements (migrated from the orphaned .zsh_alias, which nothing sourced)
+alias cat="bat"
+alias find="fd"
+alias ps="procs"
+alias chromium="google-chrome-stable"

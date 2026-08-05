@@ -157,6 +157,11 @@ advita-aws-login() {
 # claude-profile: manage Claude Code configuration profiles
 . "${XDG_DATA_HOME:-$HOME/.local/share}/claude-profile/claude-profile.sh"
 
+# claude --yolo -> --allow-dangerously-skip-permissions. Must come after
+# claude-profile.sh is sourced, since that defines its own claude().
+functions[_cp_claude]=$functions[claude]
+claude() { _cp_claude "${@/#--yolo/--allow-dangerously-skip-permissions}"; }
+
 # ripgrep: consume GNU grep -E so it behaves like --extended-regexp
 . "$HOME/.local/share/ripgrep-alias/rg.sh"
 
