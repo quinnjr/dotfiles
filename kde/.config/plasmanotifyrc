@@ -7,6 +7,9 @@ Seen=true
 [Applications][com.anthropic.claude-desktop]
 Seen=true
 
+[Applications][com.discordapp.Discord]
+Seen=true
+
 [Applications][com.mattermost.Desktop]
 Seen=true
 
@@ -22,6 +25,9 @@ Seen=true
 [Applications][firefox]
 Seen=true
 
+[Applications][org.kde.konsole]
+ShowPopups=false
+
 [Applications][org.qbittorrent.qBittorrent]
 Seen=true
 
@@ -33,3 +39,6 @@ Seen=true
 
 [Applications][vivaldi-stable]
 Seen=true
+
+[DoNotDisturb]
+NotificationSoundsMuted=true

@@ -24,7 +24,7 @@ Image=file:///home/joseph/Pictures/Wallpapers/win10-dark-hero.jpg
 
 [Containments][1][Wallpaper][org.kde.slideshow][General]
 FillMode=2
-Image=file:///home/joseph/Pictures/bg-rotation/wallhaven-o5jzm5.jpg
+Image=file:///home/joseph/Pictures/bg-rotation/wallhaven-ym975k.jpg
 Shuffle=true
 SlideInterval=300
 SlidePaths=/home/joseph/Pictures/bg-rotation
@@ -63,7 +63,7 @@ plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
 popupHeight=510
-popupWidth=647
+popupWidth=757
 
 [Containments][2][Applets][3][Configuration][ConfigDialog]
 DialogHeight=630
@@ -87,7 +87,7 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][2][Applets][5][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:brave-browser.desktop,applications:spotify.desktop,applications:com.mattermost.Desktop.desktop,applications:steam-native.desktop,applications:claude.desktop,applications:code-oss.desktop,applications:org.kde.konsole.desktop,applications:cursor.desktop
+launchers=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:brave-browser.desktop,applications:com.mattermost.Desktop.desktop,applications:spotify.desktop,applications:steam-native.desktop,applications:org.kde.konsole.desktop,applications:code-oss.desktop
 
 [Containments][2][Applets][6]
 immutability=1
@@ -157,9 +157,13 @@ plugin=org.kde.kdeconnect
 
 [Containments][2][Applets][7][Applets][24]
 immutability=1
-plugin=org.kde.plasma.battery
+plugin=org.kde.plasma.brightness
 
 [Containments][2][Applets][7][Applets][25]
+immutability=1
+plugin=org.kde.plasma.battery
+
+[Containments][2][Applets][7][Applets][26]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
@@ -200,4 +204,4 @@ SlidePaths=/usr/share/wallpapers/
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/MR8Client.zip,0,712d4284-4def-4fda-938c-4de476ccd45f
+screenMapping=desktop:/Dinoblade.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/A summer in Oneeshota Town.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Birds Organized Neatly.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/MR8Client.zip,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Fata Deum - The God Sim.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Cult of the Lamb.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Duck Detective The Secret Salami.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Beholder Conductor.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Code RAPID Demo.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/DragonSword  Awakening.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/DRAGON QUEST VII Reimagined.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Death's Door.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Trails in the Sky 1st Chapter.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f,desktop:/Ys IX Monstrum Nox.desktop,0,712d4284-4def-4fda-938c-4de476ccd45f

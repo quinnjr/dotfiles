@@ -11,6 +11,14 @@ _k_friendly_name=Keyboard Layout Switcher
 F10ED33DCAB99F9C4557E76D09392150-Ctrl+Alt+Space=none,Ctrl+Alt+Space,Claude shortcut: Ctrl+Alt+Space
 _k_friendly_name=Claude
 
+[claude-desktop]
+F10ED33DCAB99F9C4557E76D09392150-Ctrl+Alt+Space=Ctrl+Alt+Space,Ctrl+Alt+Space,Claude shortcut: Ctrl+Alt+Space
+_k_friendly_name=Claude
+
+[com.anthropic.Claude]
+F10ED33DCAB99F9C4557E76D09392150-Ctrl+Alt+Space=Ctrl+Alt+Space,Ctrl+Alt+Space,Claude shortcut: Ctrl+Alt+Space
+_k_friendly_name=Claude
+
 [com.anthropic.claude-desktop]
 F10ED33DCAB99F9C4557E76D09392150-Ctrl+Alt+Space=Ctrl+Alt+Space,Ctrl+Alt+Space,Claude shortcut: Ctrl+Alt+Space
 _k_friendly_name=Claude
@@ -283,6 +291,10 @@ show-on-mouse-pos=Meta+V,Meta+V,Show Clipboard Items at Mouse Position
 switch to next activity=none,none,Switch to Next Activity
 switch to previous activity=none,none,Switch to Previous Activity
 toggle do not disturb=none,none,Toggle do not disturb
+
+[services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=none
+OpenWithoutScreenshot=none
 
 [wacomtablet]
 Map to fullscreen=Meta+Ctrl+F,Meta+Ctrl+F,Map to fullscreen
