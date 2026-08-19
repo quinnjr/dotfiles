@@ -12,7 +12,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 export ENVIRONMENT='development'
 export NODE_ENV='development'
 
-export BROWSER='vivaldi'
+export BROWSER='brave'
 export EDITOR='nvim'
 export PAGER='less'
 export VISUAL='code'
@@ -33,6 +33,7 @@ export LDFLAGS="-fPIC"
 
 export ANSIBLE_NOCOWS='1'
 
+export BUNENV_ROOT="$XDG_DATA_HOME/bunenv"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 export CHROMIUM_USER_FLAGS="--force-device-scale-factor=2 --cipher-suite-blacklist=0x0001,0x0002,0x0004,0x0005,0x0017,0x0018,0xc002,0xc007,0xc00c,0xc011,0xc016,0xff80,0xff81,0xff82,0xff83"
@@ -95,8 +96,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME/zplug"
 export ZPLUG_HOME="$XDG_DATA_HOME/zsh/zplug"
 export ZSH_HOME="$XDG_DATA_HOME/zsh"
-
-export BUN_INSTALL="$HOME/.bun"
 
 export SSH_NO_PQ_WARNING=1
 
