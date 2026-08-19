@@ -2,3 +2,5 @@
 *~
 *.log
 *.pid
+
+**/.claude/settings.local.json
