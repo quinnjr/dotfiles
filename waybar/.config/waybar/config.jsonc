@@ -23,27 +23,17 @@
         "tray",
         "network",
         "pulseaudio",
-        "battery",
         "custom/power"
     ],
 
     "custom/start": {
-        "format": " ",
+        "format": "\uf303",
         "tooltip": false,
         "on-click": "rofi -show drun -theme ~/.config/rofi/win11.rasi"
     },
 
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "active": "",
-            "default": ""
-        },
+        "format": "{name}",
         "on-click": "activate",
         "sort-by-number": true,
         "show-special": false
@@ -62,8 +52,8 @@
 
     "clock": {
         "interval": 1,
-        "format": "{:%H:%M}",
-        "format-alt": "{:%A, %B %-d, %Y  %H:%M:%S}",
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %-d, %Y  %I:%M:%S %p}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
