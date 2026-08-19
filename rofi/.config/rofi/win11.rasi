@@ -33,12 +33,17 @@ configuration {
 window {
     width:            480px;
     background-color: @bg;
-    border:           1px solid @border-color;
+    /* rofi's `border` takes width + line style only; the colour must go in
+       `border-color`. `border: 1px solid @colour` fails the whole theme parse. */
+    border:           1px solid;
+    border-color:     @border-color;
     border-radius:    12px;
     padding:          12px;
     anchor:           center;
     location:         center;
-    y-offset:         -40px;
+    /* Must be unitless: rofi 2.0 wraps a negative distance *with* a unit to
+       unsigned (`-40px` -> 4294967256px), rendering the window offscreen. */
+    y-offset:         -40;
 }
 
 mainbox {
